@@ -1,0 +1,54 @@
+--DML
+Create TABLE TEST (ID number,
+NAME VARCHAR2(20),
+Birth_date DATE);
+insert into TEST VALUES(1,'Nicat', TO_DATE('12/05/2003',
+'DD/MM/YYYY'));
+insert into TEST VALUES(2,'Sevda', TO_DATE('02/06/2005',
+'DD/MM/YYYY'));
+
+insert into TEST VALUES(3,'Rena', TO_DATE('20/09/2000',
+'DD/MM/YYYY'));
+
+UPDATE TEST SET BIRTH_DATE=NULL
+WHERE ID=3;
+
+insert into TEST VALUES(4,'Ramin', TO_DATE('15/04/1999',
+'DD/MM/YYYY'));
+
+SAVEPOINT A;
+
+insert into TEST VALUES(5,'Bahar', TO_DATE('10/08/1998',
+'DD/MM/YYYY'));
+
+SAVEPOINT B;
+
+insert into TEST VALUES ( 6,'Selim', TO_DATE('01/08/1996',
+'DD/MM/YYYY'));
+
+ROLLBACK to A;
+
+
+--DDL
+CREATE table test5 (NAME VARCHAR2(20),
+SALARY NUMBER);
+
+ALTER TABLE test5 add surname VARCHAR2(30);
+
+ALTER TABLE test5 rename column salary to monthly_salary;
+
+Alter table test5 MODIFY surname VARCHAR2(100);
+
+ALTER TABLE test5 MODIFY name CONSTRAINT name_nn not null;
+
+Alter table test5 add created_date date;
+
+ALTER TABLE test5 rename to Employees;
+
+Alter table Employees drop COLUMN surname;
+DELETE EMPLOYEES;
+
+COMMENT ON COLUMN Employees.created_date is 'Əməkdaşın sistemə əlavə
+olunduğu tarixi göstərir';
+
+SELECT * from EMPLOYEES;
