@@ -1,0 +1,87 @@
+--Constraints
+
+Create table Test6 (ID NUMBER PRIMARY KEY,
+FULL_NAME VARCHAR2(30) NOT NULL,
+EMAIL VARCHAR2(30) UNIQUE,
+SALARY INT CHECK (SALARY>=0),
+DEP_ID NUMBER);
+
+CREATE TABLE TEST7 (DEP_ID NUMBER PRIMARY KEY,
+DEP_NAME VARCHAR2(30));
+
+DROP TABLE TEST6;
+
+Create table Test6 (ID NUMBER PRIMARY KEY,
+FULL_NAME VARCHAR2(30) NOT NULL,
+EMAIL VARCHAR2(30) UNIQUE,
+SALARY INT CHECK (SALARY>=0),
+DEP_ID NUMBER REFERENCES TEST7(DEP_ID));
+
+DROP TABLE TEST6;
+
+Create table Test6 (ID NUMBER CONSTRAINT ID_KEY PRIMARY KEY,
+FULL_NAME VARCHAR2(30),
+EMAIL VARCHAR2(30),
+SALARY INT CONSTRAINT SALARY_CHECK CHECK
+(SALARY>=0),
+DEP_ID NUMBER REFERENCES TEST7(DEP_ID),
+CONSTRAINT F_E_U UNIQUE (FULL_NAME, EMAIL));
+
+drop table Test6;
+
+Create table Test6 (ID NUMBER CONSTRAINT id_key PRIMARY KEY,
+FULL_NAME VARCHAR2(30) CONSTRAINT name_nn NOT
+NULL,
+EMAIL VARCHAR2(30) CONSTRAINT em_u UNIQUE,
+SALARY NUMBER CONSTRAINT salary_ch CHECK
+(SALARY>=0),
+DEP_ID NUMBER REFERENCES TEST7(DEP_ID));
+
+select * from USER_CONSTRAINTS t
+where lower(t.table_name)= 'Test6';
+
+select * from Test6;
+alter table Test6 drop CONSTRAINT salary_ch;
+
+alter table Test6 drop CONSTRAINT em_u;
+
+alter TABLE Test6 add CONSTRAINT email_u UNIQUE(email);
+
+--Virtual Column ve invisible column
+
+create table Test10(unit_price number,
+quantity number,
+total_amount number
+GENERATED ALWAYS as (unit_price*quantity) VIRTUAL);
+
+INSERT into TEST10 (UNIT_PRICE, quantity) VALUES (10,5);
+
+select TOTAL_AMOUNT from Test10;
+
+select * from Test10;
+
+Alter table Test10 add discount VARCHAR2(30);
+
+Alter table Test10 add net_price Number
+GENERATED ALWAYS as (total_amount-discount)VIRTUAL);
+
+drop TABLE Test10;
+
+create table Test11(unit_price number,
+quantity number,
+discount number,
+total_amount number GENERATED ALWAYS as
+(unit_price*quantity) VIRTUAL,
+Net_price Number
+GENERATED ALWAYS as (total_amount-discount)VIRTUAL);
+
+INSERT into TEST10 (UNIT_PRICE, quantity,discount) VALUES (10,5,8);
+
+create table Test10(unit_price number,
+quantity number invisible,
+total_amount number
+GENERATED ALWAYS as (unit_price*quantity) VIRTUAL);
+
+alter table test10 modify quantity visible;
+
+create Index idx_total_amount on TEST10 (total_amount);
