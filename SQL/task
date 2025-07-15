@@ -1,1 +1,83 @@
+select * from employees
+where first_name='Nancy';
+
+--2
+select * from employees
+where department_id=50;
+
+--3
+select * from employees
+where salary>3000;
+
+--4
+select * from employees
+where salary between 10000 and 15000;
+
+--5
+select first_name, last_name, hire_date from employees
+where hire_date < '09-DEC-06' ;
+--6
+select * from employees
+where hire_date between '01-JAN-07'
+and '31-DEC-08';
+
+select * from employees;
+--7
+select * from employees
+where first_name='John' and  last_name='Chen' ;
+
+select * from employees
+where first_name=' John' or last_name='Chen';
+
+--8 boşluq verdi. Çünki and funksiyasında hər iki tərəf true olmalıdır.
+--Adı John soyad Huseynli adlı şəxs yoxdur.
+select * from employees
+where first_name ='John'  and  last_name ='Huseynli'; 
+
+--9
+select * from employees
+where department_id <> 90 ;
+
+--10
+select * from employees
+where department_id in (90,100,30);
+
+--11
+select * from employees
+where first_name  like 'J%';
+
+--12
+select * from employees
+where  first_name  like 'Al%';
+
+--13
+select * from employees 
+where first_name like '%n';
+
+--14
+select * from employees
+where   first_name like '_u%';
+
+--15
+select * from employees
+where manager_id is null;
+
+--16
+select * from employees
+where manager_id is not null;
+
+--17
+select * from employees
+where first_name ='John' or  first_name='Tofiq';
+
+--18
+select first_name,  department_id, salary
+from employees
+where first_name='David'  or department_id=50 
+and salary > 3000;
+
+select first_name,  department_id, salary
+from employees
+where (first_name='David'  or department_id=50) 
+and salary > 3000
 
