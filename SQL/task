@@ -81,3 +81,22 @@ from employees
 where (first_name='David'  or department_id=50) 
 and salary > 3000
 
+--19
+ select 
+ first_name, last_name,salary,salary*commission_pct 
+ from employees
+ where commission_pct  is not null;
+
+ --20
+ select employee_id,last_name,commission_pct from employees
+ where commission_pct is null;
+
+ --21
+ select employee_id işçi_id,
+ last_name soyad,
+ first_name ad, 
+ salary "Əmək haqqı" from employees
+ where salary between 10000 and 15000;
+ 
+
+
