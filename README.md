@@ -1,5 +1,11 @@
 ## Hi there 👋
 
+My name is Kamila, and I'm Junior SQL Developer interested in data analysis and reporting.
+- 🔭 I enjoy writing efficient queries, solving business problems through data, and creating insightful dashboards.
+- 🌱 I’m currently learning Pyhton.
+- 📫 How to reach me: kamila.mohbaliyeva@gmail.com
+
+
 <!--
 **kamila-mohbaliyeva/kamila-mohbaliyeva** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
