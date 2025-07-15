@@ -1,1 +1,63 @@
+--1
+select to_char (hire_date,'MON') from employees;
+
+select
+count ( case when to_char (hire_date,'MON')='JAN' then 0 end) as "Yanvar",
+count (case when to_char (hire_date,'MON')='FEB' then 0 end) as "Fevral",
+count( case when to_char (hire_date,'MON')='MAR' then 0 end) as "Mart",
+count( case when to_char (hire_date,'MON')='APR' then 0 end) as "Aprel",
+count (case when to_char (hire_date,'MON')='MAY' then 0 end) as "May" 
+from employees;
+
+--2
+select * from employees;
+
+select
+        count(*) as "2001-2004",
+        hire_date
+        from employees
+        where extract
+       (year from hire_date) between 2001 and 2004
+       group by hire_date;
+       
+select
+count ( case when extract (year from hire_date)=2001 then 0 end) as "2001",
+count (case when extract(year from hire_date )=2002 then 0 end) as "2002",
+count( case when extract (year from hire_date)=2003 then 0 end) as "2003",
+count (case when extract (year from hire_date)=2004 then 0 end) as "2004" ,
+count (case when extract (year from hire_date) between 2001 and 2004 then 0 end)
+"2001-2004"
+from employees;
+
+
+      
+--3
+ 
+select 
+ count( case when mod(employee_id,2)=1 then 1 end) tek_say,
+ count (case when mod(employee_id,2)=0 then 1 end) cut_say
+ from employees;
+
+
+--4
+
+select 
+    max(employee_id) en_boyuk,
+    min(employee_id) from employees en_kicik;
+    
+    
+--5
+select job_id from employees;
+
+select first_name,
+       last_name,
+       job_id,
+                        case
+                        when job_id='AD_PRES' and commission_pct is null then 0.12  
+                        when job_id='IT_PROG' and commission_pct is null  then 0.125 
+                        when job_id='AD_VP' and commission_pct is null then 0.15
+                        else 0
+                        end as
+                        comission
+                        from employees ;
 
