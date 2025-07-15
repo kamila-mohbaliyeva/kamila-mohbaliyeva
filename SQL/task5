@@ -1,0 +1,54 @@
+--1
+select employee_id,
+       department_id,
+       salary,
+   row_number () over ( PARTITION by department_id order by salary desc)
+       from HR.employees;
+
+       --2
+       select employee_id,
+       department_id,
+       salary,
+       rank() over (partition by department_id order by salary desc)
+       from HR.employees;
+
+       
+       
+       select employee_id,
+       department_id,
+       salary,
+    dense_rank() over (partition by department_id order by salary desc)
+       from HR.employees;
+
+       -3
+select employee_id,
+       department_id,
+       salary,
+    lag(salary) over (partition by department_id order by salary desc)
+       prev_salary,
+    salary-lag(salary) over (partition by department_id order by salary desc)
+       diff_salary
+       from HR.employees;
+
+--4
+select employee_id,
+       department_id,
+       salary,
+    lead(salary) over (partition by DEPARTMENT_ID ordey by salary desc)
+       from HR.employees;
+
+       --5
+
+select employee_id,
+       department_id,
+       salary,
+    ntile(4) over (order by salary desc) salary_quertile
+       from HR.employees;
+
+--6
+       select employee_id,
+       department_id,
+       salary,
+    avg(salary) over ()  avg-salary,
+       salary - avg (salary) over diff_salary
+       from HR.employees;
