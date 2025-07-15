@@ -1,1 +1,69 @@
+Null Handling and Date/Time function.
+
+--1
+
+select first_name, last_name,  commission_pct from employees
+where commission_pct is null;
+
+--2
+select
+  first_name, 
+  last_name,salary, 
+  commission_pct,
+  nvl(commission_pct,0) Kommision from employees;
+ 
+ --3
+ 
+ select * from employees;
+ 
+ select first_name ad,
+        last_name soyad,
+        salary maash,
+        nvl(commission_pct,0) Komisiya
+        from employees
+        where
+        commission_pct is null and department_id in ( 60,90);
+        
+--4 
+
+   select first_name ad,
+          last_name soyad,
+          salary maash,
+          nvl(commission_pct,0.1) komisiya,
+          nvl(to_char(Manager_id),'Yoxdur') menecer_nomresi
+          from employees
+          where department_id =90 and manager_id is null;
+          
+--5
+
+select first_name ad,
+       last_name soyad,
+       salary maash,
+       nvl(commission_pct,0.192) komisiya,
+       salary * nvl(commission_pct,0.192) komisiya_mebleg
+       from employees
+       where salary * nvl(commission_pct,0.192) >2111 ;
+    
+    
+--6
+
+
+select first_name ad,
+       last_name soyad,
+       salary,
+       nvl2(salary - commission_pct * salary,salary - commission_pct * salary,salary),
+       nvl2(commission_pct,'yes','no') as comission
+       from employees
+       where salary > 11000 and department_id in (80,90);
+--7
+select sysdate,
+      add_months(sysdate,4)
+      from dual;
+      
+--8
+
+select e.*,  
+      last_day(add_months(hire_date,4))
+      from employees e;
+ 
 
