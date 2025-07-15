@@ -1,0 +1,77 @@
+Date/Tame function, Alias, Concatenation.
+
+--1
+select sysdate from dual;
+
+--2
+select sysdate-1 dunen from dual;
+
+--3
+select sysdate bu_gun from dual;
+
+--4
+select  sysdate bu_gun, sysdate-1 dunen from dual;
+
+--5
+
+ CREATE TABLE Student_information(
+ student_id  number,
+ student_name  varchar2(30),
+ student_surname  varchar2(30),
+ student_subject  varchar2(30,
+ phone_number     varchar2(30,
+ student_gender   char(1));
+ 
+select * from student_information;
+ INSERT INTO student_information
+ VALUES (
+ 1,
+ 'Aygun',
+ 'Musayeva,
+ 'Math'
+ '0503674546',
+ 'F');
+
+ INSERT INTO student_information
+ VALUES (
+ 2,
+ 'Raul',
+ 'Musayev,
+ 'History',
+ '05036745566',
+ 'M');
+ 
+ --6
+ select  first_name||' '|| last_name full_name from employees;
+ 
+ --7
+ select salary maash from employees;
+ 
+ select * from employees ishci;
+ 
+ --8
+select first_name AD, last_name Soyad,yeni.* from employees yeni;
+
+
+--9
+select first_name ||' '|| last_name ||' '||'Maash'|| ':'||' ' || salary 
+as EMEK_HAQQI
+from employees;
+
+--10
+select  first_name ad , last_name soyad, hire_date-1 from employees;
+
+--11
+select first_name ad, last_name soyad, salary*commission_pct from employees;
+
+--12
+select first_name ad, last_name soyad,salary maash, salary*2 maash
+from employees;
+
+--13
+select first_name ad, last_name soyad, salary- salary*commission_pct nett 
+from employees;
+
+--14
+select 1+2 toplama, 3-2 cixma, 2*4 vurma
+from employees;
